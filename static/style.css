@@ -1,0 +1,223 @@
+/* Glass & Bubbles */
+.bg-glass {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.18);
+}
+
+.bubbles {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.bubble {
+    position: absolute;
+    bottom: -150px;
+    background: radial-gradient(circle at 30% 30%, rgba(0,194,203,0.2), rgba(0,184,148,0.05));
+    border-radius: 50%;
+    animation: rise 12s infinite ease-in;
+    pointer-events: none;
+}
+
+.bubble:nth-child(1) {
+    width: 80px;
+    height: 80px;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.bubble:nth-child(2) {
+    width: 50px;
+    height: 50px;
+    left: 20%;
+    animation-delay: 2s;
+}
+
+.bubble:nth-child(3) {
+    width: 100px;
+    height: 100px;
+    left: 40%;
+    animation-delay: 4s;
+}
+
+.bubble:nth-child(4) {
+    width: 60px;
+    height: 60px;
+    left: 60%;
+    animation-delay: 1s;
+}
+
+.bubble:nth-child(5) {
+    width: 90px;
+    height: 90px;
+    left: 80%;
+    animation-delay: 6s;
+}
+
+.bubble:nth-child(6) {
+    width: 70px;
+    height: 70px;
+    left: 90%;
+    animation-delay: 3s;
+}
+
+.bubble:nth-child(7) {
+    width: 40px;
+    height: 40px;
+    left: 15%;
+    animation-delay: 5s;
+}
+
+.bubble:nth-child(8) {
+    width: 110px;
+    height: 110px;
+    left: 70%;
+    animation-delay: 7s;
+}
+
+.bubble:nth-child(9) {
+    width: 55px;
+    height: 55px;
+    left: 30%;
+    animation-delay: 8s;
+}
+
+@keyframes rise {
+    0% {
+        transform: translateY(0) scale(0.8) rotate(0deg);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(-130vh) scale(1.2) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+/* Fish Cards */
+.fish-card {
+    @apply bg-glass rounded-2xl p-6 text-center cursor-pointer transition-all duration-500 group;
+    min-height: 360px; /* Reduced from 420px for better mobile experience */
+    max-width: 300px; /* Added to constrain card width on large screens */
+    margin: 0 auto; /* Center cards in grid cells */
+}
+
+.fish-card:hover {
+    @apply scale-105 shadow-2xl ring-4 ring-primary/30 bg-white/10;
+    transform: translateY(-10px);
+}
+
+.fish-card.selected {
+    @apply ring-4 ring-primary/50 bg-primary/20 shadow-primary/25 scale-105;
+}
+
+.fish-card .fish-icon {
+    @apply relative mx-auto mb-6 p-6 bg-white/10 rounded-full;
+}
+
+.fish-card.selected .fish-icon {
+    @apply bg-primary/30 ring-2 ring-primary/50;
+}
+
+.fish-card .fish-icon i {
+    @apply text-primary group-hover:scale-110 transition-transform duration-500;
+}
+
+/* Parameters */
+.param-card {
+    @apply bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 shadow-lg;
+}
+
+.param-header {
+    @apply flex items-center gap-3 mb-6 font-medium text-white;
+}
+
+.scroll-input {
+    @apply w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer;
+}
+
+.scroll-input::-webkit-slider-thumb {
+    @apply appearance-none w-6 h-6 bg-gradient-to-r from-primary to-accent rounded-full shadow-lg active:scale-90;
+}
+
+.scroll-input::-moz-range-thumb {
+    @apply w-6 h-6 bg-gradient-to-r from-primary to-accent rounded-full shadow-lg active:scale-90;
+}
+
+.scroll-display {
+    @apply mt-4 text-center font-mono font-bold text-lg text-primary bg-black/20 rounded-lg py-3 px-6;
+}
+
+/* FHI Circles */
+.fhi-ring {
+    transition: stroke-dasharray 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Cards */
+.card {
+    @apply bg-white/5 backdrop-blur-md rounded-xl border border-white/10 shadow-lg;
+}
+
+/* Ripple */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.6);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+
+    .fish-card {
+        min-height: 340px; /* Slightly smaller for medium screens */
+        padding: 4px; /* Reduced padding for tighter layout */
+    }
+
+    .fish-card h3 {
+        @apply text-xl; /* Smaller heading for medium screens */
+    }
+
+    .fish-card p {
+        @apply text-base; /* Smaller text for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+
+    .param-card {
+        @apply p-5;
+    }
+
+    .scroll-display {
+        @apply text-base py-2 px-4;
+    }
+
+    .fhi-circle svg {
+        @apply w-40 h-40;
+    }
+
+    .fish-card {
+        min-height: 320px; /* Further reduced for mobile */
+        padding: 4px;
+    }
+
+    .fish-card h3 {
+        @apply text-lg;
+    }
+
+    .fish-card p {
+        @apply text-sm;
+    }
+}

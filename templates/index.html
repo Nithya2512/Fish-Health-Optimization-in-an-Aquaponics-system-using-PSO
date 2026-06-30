@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>AquaPSO Pro</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    },
+                    colors: {
+                        primary: '#00c2cb',
+                        accent: '#00b894',
+                        bg: '#0a1a2f',
+                        glass: 'rgba(255,255,255,0.12)',
+                        good: '#10b981',
+                        warn: '#f59e0b',
+                        bad: '#ef4444',
+                        gray: '#64748b',
+                    },
+                },
+            },
+        }
+    </script>
+
+    <link rel="stylesheet" href="/static/style.css"/>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-bg via-[#0f1a3c] to-[#1e3a8a] text-white overflow-x-hidden">
+
+    <!-- Bubbles -->
+    <div class="fixed inset-0 -z-10">
+        <div class="bubbles">
+            <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+            <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+            <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+        </div>
+    </div>
+
+    <div class="container max-w-7xl mx-auto px-4 py-8">
+
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+                Aqua<span class="text-white">PSO</span>
+            </h1>
+
+            <p class="mt-4 text-xl text-cyan-200">
+                Aquaponic Health Engine
+            </p>
+        </header>
+
+        <!-- Fish Selection -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+
+            <div class="fish-card" data-species="tilapia">
+                <div class="fish-icon"><i data-lucide="fish" class="w-20 h-20"></i></div>
+
+                <h3 class="text-2xl font-bold mt-6">Tilapia</h3>
+
+                <p class="text-cyan-300 mt-2 text-lg">
+                    Warm-water<br>Fast-growing
+                </p>
+
+                <div class="mt-8 p-4 bg-primary/20 rounded-xl">
+                    <span class="text-sm font-medium text-primary">
+                        SELECTED
+                    </span>
+                </div>
+            </div>
+
+            <div class="fish-card" data-species="trout">
+                <div class="fish-icon"><i data-lucide="fish" class="w-20 h-20"></i></div>
+
+                <h3 class="text-2xl font-bold mt-6">Trout</h3>
+
+                <p class="text-cyan-300 mt-2 text-lg">
+                    Cold-water<br>High DO
+                </p>
+
+                <div class="mt-8 p-4 bg-white/10 rounded-xl">
+                    <span class="text-sm font-medium text-gray-400">
+                        Click to Select
+                    </span>
+                </div>
+            </div>
+            <div class="fish-card" data-species="catfish">
+                <div class="fish-icon"><i data-lucide="fish" class="w-20 h-20"></i></div>
+                <h3 class="text-2xl font-bold mt-6">Catfish</h3>
+                <p class="text-cyan-300 mt-2 text-lg">Warm-water<br>Tolerant</p>
+                <div class="mt-8 p-4 bg-white/10 rounded-xl"><span class="text-sm font-medium text-gray-400">Click to Select</span></div>
+            </div>
+
+            <div class="fish-card" data-species="carp">
+                <div class="fish-icon"><i data-lucide="fish" class="w-20 h-20"></i></div>
+                <h3 class="text-2xl font-bold mt-6">Carp</h3>
+                <p class="text-cyan-300 mt-2 text-lg">Adaptable<br>Wide temp range</p>
+                <div class="mt-8 p-4 bg-white/10 rounded-xl"><span class="text-sm font-medium text-gray-400">Click to Select</span></div>
+            </div>
+
+            <div class="fish-card" data-species="barramundi">
+                <div class="fish-icon"><i data-lucide="fish" class="w-20 h-20"></i></div>
+                <h3 class="text-2xl font-bold mt-6">Barramundi</h3>
+                <p class="text-cyan-300 mt-2 text-lg">Tropical<br>High growth</p>
+                <div class="mt-8 p-4 bg-white/10 rounded-xl"><span class="text-sm font-medium text-gray-400">Click to Select</span></div>
+            </div>
+
+            <div class="fish-card" data-species="koi">
+                <div class="fish-icon"><i data-lucide="fish" class="w-20 h-20"></i></div>
+                <h3 class="text-2xl font-bold mt-6">Koi</h3>
+                <p class="text-cyan-300 mt-2 text-lg">Ornamental<br>Low ammonia</p>
+                <div class="mt-8 p-4 bg-white/10 rounded-xl"><span class="text-sm font-medium text-gray-400">Click to Select</span></div>
+            </div>
+
+            <div class="fish-card" data-species="salmon">
+                <div class="fish-icon"><i data-lucide="fish" class="w-20 h-20"></i></div>
+                <h3 class="text-2xl font-bold mt-6">Salmon</h3>
+                <p class="text-cyan-300 mt-2 text-lg">Cold-water<br>High DO</p>
+                <div class="mt-8 p-4 bg-white/10 rounded-xl"><span class="text-sm font-medium text-gray-400">Click to Select</span></div>
+            </div>
+
+            <div class="fish-card" data-species="pangasius">
+                <div class="fish-icon"><i data-lucide="fish" class="w-20 h-20"></i></div>
+                <h3 class="text-2xl font-bold mt-6">Pangasius</h3>
+                <p class="text-cyan-300 mt-2 text-lg">Warm-water<br>Low DO</p>
+                <div class="mt-8 p-4 bg-white/10 rounded-xl"><span class="text-sm font-medium text-gray-400">Click to Select</span></div>
+            </div>
+
+        </section>
+
+        <!-- Parameters -->
+        <section class="bg-glass backdrop-blur-xl rounded-2xl p-8 md:p-10 shadow-2xl border border-white/10 mb-12">
+
+            <h2 class="text-3xl font-semibold mb-10 flex items-center justify-center gap-3 text-white">
+                <i data-lucide="droplet" class="w-8 h-8"></i>
+                Current Water Parameters
+            </h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <div class="param-card">
+                    <div class="param-header">
+                        <i data-lucide="thermometer-sun" class="w-5 h-5"></i>
+                        <span>Temp (°C)</span>
+                    </div>
+
+                    <div class="scroll-container">
+                        <input id="temp" type="range" min="15" max="35" step="0.5" value="26" class="scroll-input">
+                        <div class="scroll-display">
+                            <span id="tempVal">26.0</span>°C
+                        </div>
+                    </div>
+                </div>
+
+                <div class="param-card">
+                    <div class="param-header">
+                        <i data-lucide="beaker" class="w-5 h-5"></i>
+                        <span>pH</span>
+                    </div>
+
+                    <div class="scroll-container">
+                        <input id="pH" type="range" min="5.5" max="9.5" step="0.1" value="7.0" class="scroll-input">
+                        <div class="scroll-display">
+                            <span id="pHVal">7.0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="param-card">
+                    <div class="param-header">
+                        <i data-lucide="droplets" class="w-5 h-5"></i>
+                        <span>DO (mg/L)</span>
+                    </div>
+
+                                <div class="scroll-container">
+                    <input id="do" type="range" min="2" max="12" step="0.1" value="5.5" class="scroll-input">
+                    <div class="scroll-display">
+                        <span id="doVal">5.5</span> mg/L
+                    </div>
+                </div>
+            </div>
+
+            <div class="param-card">
+                <div class="param-header">
+                    <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-400"></i>
+                    <span>NH₃ (mg/L)</span>
+                </div>
+
+                <div class="scroll-container">
+                    <input id="ammonia" type="range" min="0" max="1" step="0.001" value="0.08" class="scroll-input">
+                    <div class="scroll-display">
+                        <span id="ammoniaVal">0.080</span> mg/L
+                    </div>
+                </div>
+            </div>
+
+            <div class="param-card">
+                <div class="param-header">
+                    <i data-lucide="leaf" class="w-5 h-5 text-emerald-400"></i>
+                    <span>NO₃ (mg/L)</span>
+                </div>
+
+                <div class="scroll-container">
+                    <input id="nitrate" type="range" min="0" max="200" step="1" value="80" class="scroll-input">
+                    <div class="scroll-display">
+                        <span id="nitrateVal">80</span> mg/L
+                    </div>
+                </div>
+            </div>
+
+            <div class="param-card">
+                <div class="param-header">
+                    <i data-lucide="package" class="w-5 h-5"></i>
+                    <span>Biomass (kg)</span>
+                </div>
+
+                <div class="scroll-container">
+                    <input id="biomass" type="range" min="1" max="100" step="0.5" value="15" class="scroll-input">
+                    <div class="scroll-display">
+                        <span id="biomassVal">15.0</span> kg
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <button id="optimizeBtn"
+                class="w-full lg:w-auto px-12 py-4 bg-gradient-to-r from-primary to-accent text-black font-bold text-xl rounded-xl shadow-lg hover:shadow-primary/50 transition-all duration-500 flex items-center justify-center gap-3 mx-auto mt-12">
+            <i data-lucide="zap" class="w-6 h-6"></i>
+            <span>Run Optimization</span>
+            <div class="ripple"></div>
+        </button>
+
+    </section>
+
+    <!-- Results -->
+    <section id="results"
+             class="bg-glass backdrop-blur-xl rounded-2xl p-8 md:p-10 shadow-2xl border border-white/10 hidden">
+
+        <h2 class="text-3xl font-bold mb-10 flex items-center justify-center gap-3 text-emerald-400">
+            <i data-lucide="check-circle" class="w-8 h-8"></i>
+            Optimization Complete!
+        </h2>
+
+        <!-- FHI Dashboard -->
+        <div class="mb-12">
+            <h3 class="text-2xl font-semibold text-center mb-8 text-white">
+                Fish Health Index
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Current FHI -->
+                <div class="fhi-circle" data-type="current">
+                    <div class="text-center mb-4">
+                        <h4 class="text-lg font-medium text-white">Current</h4>
+                    </div>
+
+                    <svg class="w-48 h-48 mx-auto drop-shadow-lg"
+                         viewBox="0 0 200 200">
+
+                        <defs>
+
+                            <filter id="glow-current" x="-50%" y="-50%"
+                                    width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="6"
+                                                result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+
+                            <linearGradient id="current-gradient"
+                                            x1="0%" y1="0%"
+                                            x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#10b981"/>
+                                <stop offset="100%" stop-color="#059669"/>
+                            </linearGradient>
+
+                                                </linearGradient>
+                        </defs>
+
+                        <circle cx="100" cy="100" r="92" fill="none" stroke="#1e293b" stroke-width="14"/>
+                        <circle class="fhi-ring"
+                                cx="100"
+                                cy="100"
+                                r="92"
+                                fill="none"
+                                stroke="url(#current-gradient)"
+                                stroke-width="14"
+                                stroke-linecap="round"
+                                stroke-dasharray="0 577"
+                                transform="rotate(-90 100 100)"
+                                filter="url(#glow-current)"/>
+
+                        <text x="100"
+                              y="90"
+                              class="fhi-percent fill-white text-5xl font-bold text-center"
+                              text-anchor="middle">0%</text>
+                    </svg>
+
+                    <p class="fhi-status text-center mt-3 text-lg font-medium text-white"></p>
+                </div>
+
+                <!-- Forecasted FHI -->
+                <div class="fhi-circle" data-type="predicted">
+                    <div class="text-center mb-4">
+                        <h4 class="text-lg font-medium text-white">Forecasted (24h)</h4>
+                    </div>
+
+                    <svg class="w-48 h-48 mx-auto drop-shadow-lg" viewBox="0 0 200 200">
+                        <defs>
+                            <filter id="glow-predicted" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+
+                            <linearGradient id="predicted-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#10b981"/>
+                                <stop offset="100%" stop-color="#059669"/>
+                            </linearGradient>
+                        </defs>
+
+                        <circle cx="100" cy="100" r="92" fill="none" stroke="#1e293b" stroke-width="14"/>
+                        <circle class="fhi-ring"
+                                cx="100"
+                                cy="100"
+                                r="92"
+                                fill="none"
+                                stroke="url(#predicted-gradient)"
+                                stroke-width="14"
+                                stroke-linecap="round"
+                                stroke-dasharray="0 577"
+                                transform="rotate(-90 100 100)"
+                                filter="url(#glow-predicted)"/>
+
+                        <text x="100"
+                              y="90"
+                              class="fhi-percent fill-white text-5xl font-bold text-center"
+                              text-anchor="middle">0%</text>
+                    </svg>
+
+                    <p class="fhi-status text-center mt-3 text-lg font-medium text-white"></p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Interactive Grouped Bar Chart -->
+        <div class="card p-6 mb-8">
+            <h3 class="text-xl font-semibold mb-6 flex items-center gap-3 text-white">
+                <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+                Parameter Changes (Current vs Predicted)
+            </h3>
+
+            <div class="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10">
+                <canvas id="groupedBarChart" height="300"></canvas>
+            </div>
+        </div>
+
+        <!-- Current Tank -->
+        <div class="card p-6 mb-8">
+            <h3 class="text-xl font-semibold mb-6 flex items-center gap-3 text-white">
+                <i data-lucide="droplet" class="w-5 h-5"></i>
+                Your Current Tank
+            </h3>
+
+            <div id="currentInputs"
+                 class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm"></div>
+        </div>
+
+        <!-- Action Plan -->
+        <div class="card p-6 mb-8">
+            <h3 class="text-xl font-semibold mb-6 flex items-center gap-3 text-white">
+                <i data-lucide="list-checks" class="w-5 h-5"></i>
+                What You Should Do Now
+            </h3>
+
+            <ul id="actions" class="space-y-3"></ul>
+        </div>
+
+        <!-- Implementation Guide -->
+        <div class="card p-6 mb-8">
+            <h3 class="text-xl font-semibold mb-6 flex items-center gap-3 text-white">
+                <i data-lucide="info" class="w-5 h-5"></i>
+                How to Implement Changes
+            </h3>
+
+                        <div id="implementation" class="space-y-3 text-sm"></div>
+        </div>
+
+        <!-- Predicted -->
+        <div class="card p-6 mb-8">
+            <h3 class="text-xl font-semibold mb-6 flex items-center gap-3 text-white">
+                <i data-lucide="clock" class="w-5 h-5"></i>
+                Tomorrow's Forecast
+            </h3>
+
+            <div id="predicted"
+                 class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm"></div>
+        </div>
+
+        <!-- Convergence Graph -->
+        <div id="convergenceCard" class="card p-6 mt-8 hidden">
+            <h3 class="text-xl font-semibold mb-6 flex items-center gap-3 text-white">
+                <i data-lucide="trending-up" class="w-5 h-5"></i>
+                PSO Convergence (FHI over iterations)
+            </h3>
+
+            <div class="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10">
+                <canvas id="convergenceChart" height="200"></canvas>
+            </div>
+        </div>
+
+    </section>
+
+</div>
+
+<script src="/static/script.js"></script>
+<script>
+    lucide.createIcons();
+</script>
+
+</body>
+</html>
