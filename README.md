@@ -212,9 +212,3 @@ This project was developed as a **2-member academic team project**.
 
 - Cherukuri Sri Nithya
 - Saketh Aryan Amineni
-
----
-
-# 📄 License
-
-**MIT License**.
