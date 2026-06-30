@@ -191,19 +191,6 @@ http://127.0.0.1:5000
 
 ---
 
-# 📷 Screenshots
-
-You can add screenshots of:
-
-- Home Page
-- Fish Selection
-- Optimization Dashboard
-- Fish Health Index
-- Parameter Comparison Chart
-- Convergence Graph
-
----
-
 # 🔮 Future Improvements
 
 Possible future enhancements include:
